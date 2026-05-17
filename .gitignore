@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Database
+*.db
+*.sqlite3
+
+# Environment variables (secrets)
+.env
+
+# PyCharm specific
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
