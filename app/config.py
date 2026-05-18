@@ -1,0 +1,2 @@
+PROJECT_NAME = "WattWatch"
+VERSION = "1.0.0"
