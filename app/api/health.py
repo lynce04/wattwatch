@@ -1,9 +1,8 @@
 from fastapi import APIRouter
-from app.config import PROJECT_NAME
+from app.config import PROJECT_NAME, DESCRIPTION
 from app.config import VERSION
 router = APIRouter(prefix="/api/health", tags=["Health"])
 
-router_info = APIRouter(prefix="/api/health/info")
 @router.get("/")
 def health_check():
     return {
@@ -15,5 +14,5 @@ def app_info():
     return {
         "project": PROJECT_NAME,
         "version" : VERSION,
-        "description": " This is a solid FastAPI backend for energy data from SMARD.de "
+        "description":DESCRIPTION
     }
