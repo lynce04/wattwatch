@@ -14,6 +14,6 @@ def health_check():
 def app_info():
     return {
         "project": PROJECT_NAME,
-        "version" : "1.0.0",
+        "version" : VERSION,
         "description": " This is a solid FastAPI backend for energy data from SMARD.de "
     }
