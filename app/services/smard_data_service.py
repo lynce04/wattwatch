@@ -18,7 +18,10 @@ async def import_smard_data(filter_id,region,db):
 
     return count
 
-def get_all_smard_data(db,skip:int=0,limit:int=10,from_date:int=None,to_date:int=None):
+def get_all_smard_data(db):
+    return db.query(SmardData).all()
+
+def get_all_filtered_smard_data(db,skip:int=0,limit:int=10,from_date:int=None,to_date:int=None):
     query=db.query(SmardData)
 
     if from_date:
