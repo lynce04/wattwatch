@@ -1,0 +1,22 @@
+from fastapi import Depends, HTTPException,APIRouter
+from database.session import get_db
+from app.services.emission_service import get_emission_by_id,get_all_emissions,calculate_and_store_emission
+
+router = APIRouter(prefix="/api/emissions" , tags=["Emissions"])
+@router.post("/calculate")
+async def calculate_emissions (region:str ,db=Depends(get_db)):
+    result = await calculate_and_store_emission(region,db)
+    if result is None  : return {"error":"Not enough data from Smard"}
+    return result
+
+
+@router.get("/")
+async def get_emissions(db=Depends(get_db)):
+    result = get_all_emissions(db)
+    return result
+
+@router.get("/{id}")
+async def get_emission_by_id_route (id:int,db=Depends(get_db)):
+    result = get_emission_by_id(id,db)
+    if result is None : raise HTTPException(status_code=404, detail="Not found")
+    return result
