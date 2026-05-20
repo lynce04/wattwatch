@@ -5,6 +5,7 @@ from database.session import engine
 from database import *
 from app.api.smard import router as smard_router
 from app.api.emissions import router as emissions_router
+from app.api.simulations import router as simulation_router
 app = FastAPI(
     title="WattWatch",
     description="Energy market data API for Germany",
@@ -14,5 +15,5 @@ app = FastAPI(
 Base.metadata.create_all(bind=engine)
 app.include_router(health_router)
 app.include_router(smard_router)
-
 app.include_router(emissions_router)
+app.include_router(simulation_router)
