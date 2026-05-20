@@ -58,7 +58,9 @@ async def calculate_and_store_emission(region: str, db):
     ) / total_production
 
     #  Get current timestamp
-    timestamp = int(datetime.now(timezone.utc).timestamp())
+
+    now = datetime.now(timezone.utc)
+    timestamp = int(now.replace(minute=0, second=0, microsecond=0).timestamp())
 
 
     # Check if we already have a record for this timestamp
