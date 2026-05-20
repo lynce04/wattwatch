@@ -17,6 +17,14 @@ async def create_simulation_route (
         db=Depends(get_db)):
     start = datetime.strptime(start_date, "%Y-%m-%d")
     end = datetime.strptime(end_date, "%Y-%m-%d")
+    now = datetime.now()
+
+    # Check start is before end
+    if start > end:
+        raise HTTPException(
+            status_code=400,
+            detail="start_date must be before end_date"
+        )
 
     result = create_simulation(name, description, scenario, start, end, db)
 
